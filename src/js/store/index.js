@@ -1,5 +1,11 @@
 // src/js/store/index.js
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "../reducers/index";
-const store = createStore(rootReducer);
+import { forbiddenWordsMiddleware } from "../middleware";
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(forbiddenWordsMiddleware)
+);
+
 export default store;
